@@ -1,0 +1,174 @@
+You've seen the logistic regression model, you've seen the loss function that
+measures how well you're doing on the single training example.
+You've also seen the cost function that measures how well your parameters W and
+B are doing on your entire training set.
+Now let's talk about how you can use the gradient descent algorithm to train or
+to learn the parameters W on your training set.
+To recap here is the familiar logistic regression algorithm and
+we have on the second line the cost function J,
+which is a function of your parameters W and B.
+And that's defined as the average is one over m times has some of
+this loss function.
+And so the loss function measures how well your algorithms outputs.
+Y hat I on each of the training examples stacks up compares to the boundary
+lables Y I on each of the training examples. The
+full formula is expanded out on the right.
+So the cost function measures how well your parameters w and
+b are doing on the training set.
+So in order to learn a set of parameters w and b,
+it seems natural that we want to find w and b.
+That make the cost function J of w, b as small as possible.
+So, here's an illustration of gradient descent.
+In this diagram, the horizontal axes represent your space of parameters w and
+b in practice w can be much higher dimensional, but for the purposes of
+plotting, let's illustrate w as a singular number and b as a singular number.
+The cost function J of w,
+b is then some surface above these horizontal axes w and b.
+So the height of the surface represents the value of J, b at a certain point.
+And what we want to do really is to find the value of w and
+b that corresponds to the minimum of the cost function J.
+It turns out that this particular cost function J is a convex function.
+So it's just a single big bowl, so this is a convex function and
+this is as opposed to functions that look like this,
+which are non convex and has lots of different local optimal.
+So the fact that our cost function J of w, b as defined here is convex,
+is one of the huge reasons why we use this particular cost function J for
+logistic regression.
+So to find a good value for the parameters,
+what we'll do is initialize w and
+b to some initial value may be denoted by that little red dot.
+And for logistic regression, almost any initialization method works.
+Usually you Initialize the values of 0.
+Random initialization also works, but people don't usually do that for
+logistic regression.
+But because this function is convex, no matter where you initialize,
+you should get to the same point or roughly the same point.
+And what gradient descent does is it starts at that initial point and
+then takes a step in the steepest downhill direction.
+So after one step of gradient descent, you might end up there because it's
+trying to take a step downhill in the direction of steepest descent or
+as quickly down who as possible.
+So that's one iteration of gradient descent.
+And after iterations of gradient descent,
+you might stop there, three iterations and so on.
+I guess this is not hidden by the back of the plot until eventually, hopefully you
+converge to this global optimum or get to something close to the global optimum.
+So this picture illustrates the gradient descent algorithm.
+Let's write a little bit more of the details for the purpose of illustration,
+let's say that there's some function J of w that you want to minimize and
+maybe that function looks like this to make this easier to draw.
+I'm going to ignore b for
+now just to make this one dimensional plot instead of a higher dimensional plot.
+So gradient descent does this.
+We're going to repeatedly carry out the following update.
+We'll take the value of w and update it.
+Going to use colon equals to represent updating w.
+So set w to w minus alpha times and
+this is a derivative d of J w d w.
+And we repeatedly do that until the algorithm converges.
+So a couple of points in the notation alpha here is the learning rate and
+controls how big a step we take on each iteration are gradient descent,
+we'll talk later about some ways for choosing the learning rate,
+alpha and second this quantity here, this is a derivative.
+This is basically the update of the change you want to make to the parameters w,
+when we start to write code to implement gradient descent,
+we're going to use the convention that the variable name in our code,
+d w will be used to represent this derivative term.
+So when you write code, you write something like w equals or
+cold equals w minus alpha time's d w.
+So we use d w to be the variable name to represent this derivative term.
+Now, let's just make sure that this gradient descent update makes sense.
+Let's say that w was over here.
+So you're at this point on the cost function J of w.
+Remember that the definition of a derivative is the slope
+of a function at the point.
+So the slope of the function is really,
+the height divided by the width right of the lower triangle.
+Here, in this tension to J of w at that point.
+And so here the derivative is positive.
+W gets updated as w minus a learning rate times the derivative,
+the derivative is positive.
+And so you end up subtracting from w.
+So you end up taking a step to the left and so gradient descent with,
+make your algorithm slowly decrease the parameter.
+If you had started off with this large value of w.
+As another example, if w was over here,
+then at this point the slope here or dJ detail, you will be negative.
+And so they driven to send update with subtract alpha times a negative number.
+And so end up slowly increasing w.
+So you end up you're making w bigger and
+bigger with successive generations of gradient descent.
+So that hopefully whether you initialize on the left, wonder right,
+create into central move you towards this global minimum here.
+If you're not familiar with derivatives of calculus and
+what this term d J of w d w means.
+Don't worry too much about it.
+We'll talk some more about derivatives in the next video.
+If you have a deep knowledge of calculus,
+you might be able to have a deeper intuitions about how neural networks work.
+But even if you're not that familiar with calculus in the next few videos
+will give you enough intuitions about derivatives and
+about calculus that you'll be able to effectively use neural networks.
+But the overall intuition for
+now is that this term represents the slope of the function and we want to
+know the slope of the function at the current setting of the parameters so
+that we can take these steps of steepest descent so that we know what
+direction to step in in order to go downhill on the cost function J.
+So we wrote our gradient descent for J of w.
+If only w was your parameter in logistic regression.
+Your cost function is a function above w and b.
+In that case the inner loop of gradient descent,
+that is this thing here the thing you have to repeat becomes as follows.
+You end up updating w as w minus the learning rate
+times the derivative of J of wb respect to w and
+you update b as b minus the learning rate times
+the derivative of the cost function respect to b.
+So these two equations at the bottom of the actual update you implement as in
+the side, I just want to mention one notation, all convention and calculus.
+That is a bit confusing to some people.
+I don't think it's super important that you understand calculus but
+in case you see this, I want to make sure that you don't think too much of this.
+Which is that in calculus this term here we actually write as follows,
+that funny squiggle symbol.
+So this symbol, this is actually just the lower
+case d in a fancy font, in a stylized font.
+But when you see this expression, all this means is this is the of J of w,
+b or really the slope of the function J of w,
+b how much that function slopes in the w direction.
+And the rule of the notation and calculus, which I think is in total logical.
+But the rule in the notation for calculus, which I think just makes things
+much more complicated than you need to be is that if J is a function of two or
+more variables, then instead of using lower case d.
+You use this funny symbol.
+This is called a partial derivative symbol, but don't worry about this.
+And if J is a function of only one variable, then you use lower case d.
+So the only difference between whether you use this funny partial derivative symbol
+or lower case d.
+As we did on top is whether J is a function of two or more variables.
+In which case use this symbol, the partial derivative symbol or
+J is only a function of one variable.
+Then you use lower case d.
+This is one of those funny rules of notation and
+calculus that I think just make things more complicated than they need to be.
+But if you see this partial derivative symbol,
+all it means is you're measuring the slope of the function with
+respect to one of the variables, and similarly to adhere to the,
+formally correct mathematical notation calculus because here J has two inputs.
+Not just one.
+This thing on the bottom should be written with this partial derivative simple,
+but it really means the same thing as, almost the same thing as lowercase d.
+Finally, when you implement this in code,
+we're going to use the convention that this quantity really the amount
+I wish you update w will denote as the variable d w in your code.
+And this quantity, right, the amount by which you want
+to update b with the note by the variable db in your code.
+All right. So
+that's how you can implement gradient descent.
+Now if you haven't seen calculus for a few years, I know that that might seem like
+a lot more derivatives and calculus than you might be comfortable with so far.
+But if you're feeling that way, don't worry about it.
+In the next video will give you better intuition about derivatives.
+And even without the deep mathematical understanding of calculus,
+with just an intuitive understanding of calculus,
+you will be able to make your networks work effectively so
+that let's go into the next video, we'll talk a little bit more about derivatives.

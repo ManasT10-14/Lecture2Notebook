@@ -1,0 +1,210 @@
+In a previous video, you saw
+the basic blocks of implementing a deep neural network,
+a forward propagation step for
+each layer and a corresponding backward propagation step.
+Let's see how you can actually implement these steps.
+We'll start with forward propagation.
+Recall that what this will do is input a^l minus 1,
+and outputs a^l and the cache, z^l.
+We just said that, from implementational point of view,
+maybe we'll cache w^l and b^l as well,
+just to make the function's call a
+bit easier in the program exercise.
+The equations for this should already look familiar.
+The way to implement a forward function is just this,
+equals w^l times a^l minus 1 plus b^l,
+and then a^l equals the activation function applied to z.
+If you want a vectorized implementation,
+then it's just that times a^l minus 1 plus b,
+b being a Python broadcasting,
+and a^l equals g,
+applied element-wise to z.
+You remember, on the diagram for the 4th step,
+remember we had this chain of boxes going forward,
+so you initialize that with feeding
+in a^0, which is equal to x.
+So you initialize this with,
+what is the input to the first one?
+It's really a^0, which is the input
+features either for one training example
+if you're doing one example at a time,
+or a^0 if you're processing the entire training set.
+That's the input to
+the first forward function in the chain,
+and then just repeating this allows you to compute
+forward propagation from left to right.
+Next, let's talk about the backward propagation step.
+Here, your goal is to input da^l,
+and output da^l minus 1 and dw^l and db^l.
+Let me just write out
+the steps you need to compute these things.
+Dz^l is equal to da^l element-wise product,
+with g of l prime z of
+l. Then to compute the derivatives,
+dw^l equals dz^l times a of l minus 1.
+I didn't explicitly put that in the cache,
+but it turns out you need this as well.
+Then db^l is equal to dz^l, and finally,
+da of l minus 1 is equal to
+w^l transpose times dz^l.
+I don't want to go through
+the detailed derivation for this,
+but it turns out that if you take this definition
+for da and plug it in here,
+then you get the same formula
+as we had in there previously,
+for how you compute
+dz^l as a function of the previous dz^l.
+In fact, well, if I just plug that in here,
+you end up that dz^l is equal
+to w^l plus 1 transpose dz^l
+plus 1 times g^l prime z
+of l. I know this looks like a lot of algebra.
+You could actually double-check for
+yourself that this is the equation
+we had written down for back propagation last week,
+when we were doing a neural network
+with just a single hidden layer.
+As a reminder, this times is element-wise product,
+so all you need is
+those four equations to implement your backward function.
+Then finally, I'll just write out a vectorized version.
+So the first line becomes dz^l
+equals da^l element-wise product with g^l prime of z^l,
+maybe no surprise there.
+Dw^l becomes 1 over m,
+dz^l times a^l minus 1 transpose.
+Then db^l becomes 1 over m np.sum dz^l.
+Then axis equals 1, keepdims equals true.
+We talked about the use of
+np.sum in the previous week, to compute db.
+Then finally, da^l minus 1 is w^l transpose times
+dz of l. This
+allows you to input this quantity, da, over here.
+Output dW^l, dp^l, the derivatives you need,
+as well as da^l minus 1 as follows.
+That's how you implement the backward function.
+Just to summarize, take the input x,
+you may have the first layer maybe
+has a ReLU activation function.
+Then go to the second layer,
+maybe uses another ReLU activation function,
+goes to the third layer maybe has
+a sigmoid activation function
+if you're doing binary classification,
+and this outputs y-hat.
+Then using y-hat, you can compute the loss.
+This allows you to start your backward iteration.
+I'll draw the arrows first.
+I guess I don't have to change pens too much.
+Where you will then
+have backprop compute the derivatives,
+compute dW^3,
+db^3, dW^2, db^2, dW^1, db^1.
+Along the way you would be computing against the cash.
+We'll transfer z^1, z^2, z^3.
+Here you pass backwards da^2 and da^1.
+This could compute da^0,
+but we won't use that so you can just discard that.
+This is how you implement forward prop and back prop for
+a three-layer neural network.
+There's this one last detail that I didn't talk
+about which is for the forward recursion,
+we will initialize it with the input data x.
+How about the backward recursion?
+Well it turns out that
+da of l when you're using logistic regression,
+when you're doing binary classification
+is equal to y over
+a plus 1 minus y over 1 minus a.
+It turns out that the derivative
+of the loss function respect to
+the output with respect to
+y-hat can be shown to be what it is.
+If you're familiar with calculus,
+if you look up the loss function l and
+take derivatives with respect to y-hat with respect to a,
+you can show that you get that formula.
+This is the formula you should use for da,
+for the final layer,
+capital L. Of course if you
+were to have a vectorized implementation,
+then you initialize
+the backward recursion, not with this,
+but with da capital A for
+the layer L which is going to be
+the same thing for the different examples.
+Over a for the first train example plus 1 minus
+y for the first train example over
+1 minus A for the first train example,
+dot-dot-dot down to the nth train example.
+So 1 minus a of M. That's how
+you'd implement the vectorized version.
+That's how you initialize
+the vectorized version of back propagation.
+We've now seen the basic building blocks of
+both forward propagation as well as back propagation.
+Now if you implement these equations,
+you will get the correct implementation of
+forward prop and backprop to
+get you the derivatives you need.
+You might be thinking, well those are a lot of equations.
+I'm slightly confused. I'm not quite sure I see
+how this works and if you're feeling that way,
+my advice is when you
+get to this week's programming assignment,
+you will be able to implement these for
+yourself and they will be much more concrete.
+I know those are a lot of equations,
+and maybe some of the equations
+didn't make complete sense,
+but if you work through
+the calculus and the linear algebra which is not easy,
+so feel free to try,
+but that's actually one of the more
+difficult derivations in machine learning.
+It turns out the equations we wrote down are
+just the calculus equations
+for computing the derivatives,
+especially in backprop, but once again,
+if this feels a little bit abstract,
+a little bit mysterious to you,
+my advice is when you've done the programming exercise,
+it will feel a bit more concrete to you.
+Although I have to say, even
+today when I implement a learning algorithm,
+sometimes even I'm surprised when
+my learning algorithm implementation
+works and it's because
+a lot of the complexity of
+machine learning comes from
+the data rather than from the lines of codes.
+Sometimes you feel like
+you implement a few lines of code,
+not quite sure what it did,
+but it almost magically works,
+and it's because a lot of magic is actually not in
+the piece of code you write which is often not too long.
+It's not exactly simple,
+but it's not 10,000,
+100,000 lines of code,
+but you feed it so much data that
+sometimes even though I've
+worked with machine learning for a long time,
+sometimes it still surprises
+me a bit when my learning algorithm works,
+because a lot of the complexity of
+your learning algorithm comes from the data
+rather than necessarily from you
+writing thousands and thousands of lines of code.
+That's how you implement deep neural networks.
+Again this will become more
+concrete when you've done the programming exercising.
+Before moving on, in the next video,
+I want to discuss hyper-parameters and parameters.
+It turns out that when you're training deep nets,
+being able to organize your hyper-parameters well
+will help you be more efficient
+in developing your networks.
+In the next video, let's talk
+about exactly what that means.

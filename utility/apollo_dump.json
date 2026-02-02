@@ -1,0 +1,383 @@
+{
+  "CourseQueries:{}": {
+    "__typename": "CourseQueries",
+    "queryBySlug({\"slug\":\"neural-networks-deep-learning\"})": {
+      "__typename": "Course_Course",
+      "id": "W_mOXCrdEeeNPQ68_4aPpA",
+      "slug": "neural-networks-deep-learning",
+      "name": "Neural Networks and Deep Learning",
+      "launchedAt": "2017-08-08T18:15:43.671Z",
+      "isReal": true,
+      "courseTypeMetadata": {
+        "__typename": "Course_CourseTypeMetadataWithVersion",
+        "version": 1,
+        "metadata": {
+          "__typename": "Course_StandardCourseMetadata"
+        }
+      },
+      "brandingImageUrl": "https://coursera-course-photos.s3.amazonaws.com/b4/96feb7c9924dc49c0b46e76e9b5c01/Navigation-Branding-image.png",
+      "overridePartnerLogos": [],
+      "partners": [
+        {
+          "__ref": "Partner_Partner:475"
+        }
+      ]
+    },
+    "queryById({\"id\":\"W_mOXCrdEeeNPQ68_4aPpA\"})": {
+      "__typename": "Course_Course",
+      "id": "W_mOXCrdEeeNPQ68_4aPpA",
+      "name": "Neural Networks and Deep Learning",
+      "slug": "neural-networks-deep-learning",
+      "isReal": true,
+      "launchedAt": "2017-08-08T18:15:43.671Z",
+      "plannedLaunchDate": "Soon",
+      "preEnrollmentEnabledAt": "2017-08-08T14:56:15.868Z",
+      "sessionsEnabledAt": "2017-04-27T00:06:27.725Z",
+      "verificationEnabledAt": "2017-04-27T00:06:27.725Z",
+      "partners": [
+        {
+          "__ref": "Partner_Partner:475"
+        }
+      ],
+      "premiumExperiences": [
+        {
+          "__typename": "Course_PremiumExperience",
+          "variant": "PREMIUM_GRADING"
+        }
+      ],
+      "specializations": [
+        {
+          "__ref": "Specialization_Specialization:W62RsyrdEeeFQQqyuQaohA"
+        }
+      ],
+      "upcomingCourseSession": {
+        "__typename": "Session_Session",
+        "startsAt": "2025-12-08T08:00:00.000Z"
+      }
+    }
+  },
+  "ROOT_QUERY": {
+    "__typename": "Query",
+    "Course": {
+      "__ref": "CourseQueries:{}"
+    },
+    "ProgramMemberships": {
+      "__ref": "ProgramMembershipsQueries:{}"
+    },
+    "EnrollmentChoice": {
+      "__ref": "EnrollmentChoiceQueries:{}"
+    },
+    "CourseraTierSubscriptionsQueries": {
+      "__ref": "CourseraTierSubscriptionsFetchQueries:{}"
+    },
+    "LexExperimentEvents": {
+      "__ref": "LexExperimentEventsQueries:{}"
+    },
+    "FinancialAidApplication": {
+      "__ref": "FinancialAidApplicationQueries:{}"
+    },
+    "Entitlement": {
+      "__ref": "EntitlementQueries:{}"
+    },
+    "Specialization": {
+      "__ref": "SpecializationQueries:{}"
+    },
+    "DailyGoals": {
+      "__ref": "DailyGoalsQueries:{}"
+    },
+    "CourseProgress": {
+      "__ref": "CourseProgressQueries:{}"
+    },
+    "GuidedCourseNextStepsV1@naptime": {
+      "__ref": "NaptimeGuidedCourseNextStepsV1Resource:{}"
+    }
+  },
+  "ProgramMembershipsQueries:{}": {
+    "__typename": "ProgramMembershipsQueries",
+    "queryProgramMembershipsByUserIdAndIncludeInvitations({\"includeInvitations\":false,\"userId\":78576527})": {
+      "__typename": "ProgramMemberships_ProgramMembershipConnection",
+      "edges": []
+    }
+  },
+  "Partner_Partner:475": {
+    "__typename": "Partner_Partner",
+    "id": "475",
+    "name": "DeepLearning.AI",
+    "rectangularLogo": "http://coursera-university-assets.s3.amazonaws.com/67/dfedb83a7341b0927a05af4ebb1c14/LogoFiles_DeepLearning_Coursera_wide.png",
+    "squareLogo": "http://coursera-university-assets.s3.amazonaws.com/b4/5cb90bb92f420b99bf323a0356f451/Icon.png"
+  },
+  "EnrollmentChoiceQueries:{}": {
+    "__typename": "EnrollmentChoiceQueries",
+    "enrollmentChoices({\"includeProgramInvitationCheck\":true,\"productItemId\":\"W_mOXCrdEeeNPQ68_4aPpA\",\"productType\":\"VerifiedCertificate\",\"userId\":78576527})": {
+      "__typename": "EnrollmentChoicePayload",
+      "enrollmentChoices": [],
+      "courseId": "W_mOXCrdEeeNPQ68_4aPpA",
+      "specializationId": "W62RsyrdEeeFQQqyuQaohA",
+      "enrollmentBlockingReason": {
+        "__typename": "EnrollmentBlockingReason",
+        "enrollmentChoiceReasonCode": "ENROLLED",
+        "enrollmentChoiceReasonMetadata": null
+      },
+      "enrollmentChoiceReasonCode": "ENROLLED",
+      "enrollmentChoiceReasonMetadata": null,
+      "s12nEnrollmentBlockingData": []
+    }
+  },
+  "Specialization_Specialization:W62RsyrdEeeFQQqyuQaohA": {
+    "__typename": "Specialization_Specialization",
+    "id": "W62RsyrdEeeFQQqyuQaohA",
+    "launchedAt": "2017-08-08T14:58:02.268Z",
+    "plannedLaunchDate": null,
+    "preEnrollmentEnabledAt": null,
+    "premiumExperienceVariant": "PREMIUM_GRADING",
+    "capstoneCourses": [],
+    "name": "Deep Learning",
+    "slug": "deep-learning",
+    "isPublic": true,
+    "productVariant": "NORMAL_S12N"
+  },
+  "CourseraTierSubscriptionsFetchQueries:{}": {
+    "__typename": "CourseraTierSubscriptionsFetchQueries",
+    "queryProductOwnershipsByUser({\"userId\":\"78576527\"})": []
+  },
+  "LexExperimentEvents_Event:14848404": {
+    "__typename": "LexExperimentEvents_Event",
+    "id": "14848404",
+    "eventType": "DAY_ONE_ONBOARDING_MODAL_SEEN",
+    "createdAt": "2024-12-27T04:41:52.000Z"
+  },
+  "LexExperimentEventsQueries:{}": {
+    "__typename": "LexExperimentEventsQueries",
+    "queryByEventType({\"eventType\":\"DAY_ONE_ONBOARDING_MODAL_SEEN\"})": {
+      "__ref": "LexExperimentEvents_Event:14848404"
+    }
+  },
+  "User:78576527": {
+    "__typename": "User",
+    "id": "78576527"
+  },
+  "Cart:589340362": {
+    "__typename": "Cart",
+    "id": "589340362"
+  },
+  "FinancialAidApplication:26924551": {
+    "__typename": "FinancialAidApplication",
+    "id": "26924551",
+    "userId": {
+      "__ref": "User:78576527"
+    },
+    "approvalEstimatedAt": null,
+    "createdAt": "2025-11-23T09:03:35.987Z",
+    "productId": {
+      "__typename": "FinancialAidApplication_ProductId",
+      "productItemId": "W_mOXCrdEeeNPQ68_4aPpA",
+      "productType": "VerifiedCertificate"
+    },
+    "state": "APPROVED_PAID",
+    "cartId": {
+      "__ref": "Cart:589340362"
+    }
+  },
+  "FinancialAidApplicationQueries:{}": {
+    "__typename": "FinancialAidApplicationQueries",
+    "queryByUserAndProduct({\"limit\":1,\"productId\":{\"productItemId\":\"W_mOXCrdEeeNPQ68_4aPpA\",\"productType\":\"VerifiedCertificate\"},\"userId\":\"78576527\"})": {
+      "__typename": "FinancialAidApplication_FinancialAidApplicationPaginatedResult",
+      "elements": [
+        {
+          "__ref": "FinancialAidApplication:26924551"
+        }
+      ]
+    }
+  },
+  "Entitlement_ProductOwnership:78576527~VerifiedCertificate~W_mOXCrdEeeNPQ68_4aPpA": {
+    "__typename": "Entitlement_ProductOwnership",
+    "id": "78576527~VerifiedCertificate~W_mOXCrdEeeNPQ68_4aPpA",
+    "owns": true,
+    "expiredOwns": false,
+    "s12nCourseOwnerships": null,
+    "expiresAt": {
+      "__typename": "Timestamp",
+      "seconds": "1780732346",
+      "nanos": 0
+    },
+    "firstOwnedAt": {
+      "__typename": "Timestamp",
+      "seconds": "1765180346",
+      "nanos": 0
+    },
+    "lastUpdatedTime": {
+      "__typename": "Timestamp",
+      "seconds": "1765180348",
+      "nanos": 440000000
+    }
+  },
+  "EntitlementQueries:{}": {
+    "__typename": "EntitlementQueries",
+    "queryProductOwnership({\"productOwnershipId\":\"78576527~VerifiedCertificate~W_mOXCrdEeeNPQ68_4aPpA\"})": {
+      "__ref": "Entitlement_ProductOwnership:78576527~VerifiedCertificate~W_mOXCrdEeeNPQ68_4aPpA"
+    },
+    "queryProductOwnership({\"productOwnershipId\":\"78576527~Specialization~W62RsyrdEeeFQQqyuQaohA\"})": {
+      "__ref": "Entitlement_ProductOwnership:78576527~Specialization~W62RsyrdEeeFQQqyuQaohA"
+    }
+  },
+  "SpecializationQueries:{}": {
+    "__typename": "SpecializationQueries",
+    "getPrimarySpecializationForCourse({\"courseId\":\"W_mOXCrdEeeNPQ68_4aPpA\"})": {
+      "__ref": "Specialization_Specialization:W62RsyrdEeeFQQqyuQaohA"
+    }
+  },
+  "DailyGoalsQueries:{}": {
+    "__typename": "DailyGoalsQueries",
+    "queryDailyGoals({\"activeCourseId\":\"W_mOXCrdEeeNPQ68_4aPpA\"})": {
+      "__typename": "LearnerGoals_DailyGoals",
+      "dayOfLearning": 4,
+      "dailyGoals": [
+        {
+          "__typename": "LearnerGoals_DailyGoal",
+          "goalId": "2025-12-20~COMPLETE_ITEMS",
+          "goalTypeAndProgressDetails": {
+            "__typename": "LearnerGoals_DailyGoalCompleteItems",
+            "progressDetails": {
+              "__typename": "LearnerGoals_CompleteItemsProgressDetails",
+              "numberOfCompletedItems": 0,
+              "targetNumberOfItemsToComplete": 3
+            }
+          },
+          "progressStatus": "NOT_STARTED"
+        },
+        {
+          "__typename": "LearnerGoals_DailyGoal",
+          "goalId": "2025-12-20~SCORE_80_PERCENT_ON_ASSIGNMENT",
+          "goalTypeAndProgressDetails": {
+            "__typename": "LearnerGoals_DailyGoalScore80PercentOnAssignment",
+            "_": null
+          },
+          "progressStatus": "NOT_STARTED"
+        },
+        {
+          "__typename": "LearnerGoals_DailyGoal",
+          "goalId": "2025-12-20~MAKE_PROGRESS_ON_WEEKLY_STREAK_TARGET",
+          "goalTypeAndProgressDetails": {
+            "__typename": "LearnerGoals_DailyGoalMakeProgressOnWeeklyStreakTarget"
+          },
+          "progressStatus": "NOT_STARTED"
+        }
+      ]
+    }
+  },
+  "CourseProgressQueries:{}": {
+    "__typename": "CourseProgressQueries",
+    "queryCourseBranchModuleProgressByCourse({\"courseId\":\"W_mOXCrdEeeNPQ68_4aPpA\"})": [
+      {
+        "__typename": "CourseProgress_CourseBranchModuleProgress",
+        "moduleId": "tfmmo",
+        "moduleIndex": 0,
+        "moduleCompletionStatus": "STARTED"
+      },
+      {
+        "__typename": "CourseProgress_CourseBranchModuleProgress",
+        "moduleId": "0II0E",
+        "moduleIndex": 1,
+        "moduleCompletionStatus": "NOT_STARTED"
+      },
+      {
+        "__typename": "CourseProgress_CourseBranchModuleProgress",
+        "moduleId": "qaG8e",
+        "moduleIndex": 2,
+        "moduleCompletionStatus": "NOT_STARTED"
+      },
+      {
+        "__typename": "CourseProgress_CourseBranchModuleProgress",
+        "moduleId": "69zRV",
+        "moduleIndex": 3,
+        "moduleCompletionStatus": "NOT_STARTED"
+      }
+    ]
+  },
+  "NaptimeGuidedCourseNextStepsV1:78576527~neural-networks-deep-learning": {
+    "__typename": "NaptimeGuidedCourseNextStepsV1",
+    "id": "78576527~neural-networks-deep-learning",
+    "nextStep": {
+      "__typename": "NaptimeGuidedCourseNextStepsV1_nextStep_courseMaterialNextStep",
+      "typeName": "courseMaterialNextStep",
+      "definition": {
+        "__typename": "NaptimeGuidedCourseNextStepsV1_nextStep_courseMaterialNextStep_definition",
+        "item": {
+          "__typename": "NaptimeGuidedCourseNextStepsV1_nextStep_courseMaterialNextStep_definition_item",
+          "computedProgressState": "Started",
+          "itemDeadlineStatus": "ONTRACK",
+          "trackId": "core",
+          "resourcePath": "/learn/neural-networks-deep-learning/lecture/7dP6E/deep-l-layer-neural-network",
+          "isLocked": false,
+          "name": "Deep L-layer Neural Network",
+          "id": "7dP6E",
+          "isOptional": false,
+          "timeCommitment": 350000,
+          "contentSummary": {
+            "__typename": "NaptimeGuidedCourseNextStepsV1_nextStep_courseMaterialNextStep_definition_item_contentSummary_lecture",
+            "typeName": "lecture",
+            "definition": {
+              "__typename": "NaptimeGuidedCourseNextStepsV1_nextStep_courseMaterialNextStep_definition_item_contentSummary_lecture_definition",
+              "duration": 350000,
+              "hasInVideoAssessment": false
+            }
+          }
+        },
+        "courseMaterialNextStepType": "STUDY_MATERIAL_ONTRACK",
+        "sessionStartedAt": 1766082600000,
+        "currentWeekNumberByProgress": 4
+      }
+    }
+  },
+  "NaptimeGuidedCourseNextStepsV1Resource:{}": {
+    "__typename": "NaptimeGuidedCourseNextStepsV1Resource",
+    "multiGet({\"ids\":\"78576527~neural-networks-deep-learning\"})": {
+      "__typename": "NaptimeGuidedCourseNextStepsV1Connection",
+      "elements": [
+        {
+          "__ref": "NaptimeGuidedCourseNextStepsV1:78576527~neural-networks-deep-learning"
+        }
+      ]
+    }
+  },
+  "Entitlement_ProductOwnership:78576527~Specialization~W62RsyrdEeeFQQqyuQaohA": {
+    "__typename": "Entitlement_ProductOwnership",
+    "id": "78576527~Specialization~W62RsyrdEeeFQQqyuQaohA",
+    "owns": false,
+    "expiredOwns": false,
+    "s12nCourseOwnerships": [
+      {
+        "__typename": "Entitlement_CourseOwnership",
+        "courseId": "BZ5quSvBEee6gA5XksfBbg",
+        "owns": false
+      },
+      {
+        "__typename": "Entitlement_CourseOwnership",
+        "courseId": "W_mOXCrdEeeNPQ68_4aPpA",
+        "owns": true
+      },
+      {
+        "__typename": "Entitlement_CourseOwnership",
+        "courseId": "-7ZymCvBEee6gA5XksfBbg",
+        "owns": false
+      },
+      {
+        "__typename": "Entitlement_CourseOwnership",
+        "courseId": "kWGvJivBEeeW5RJUyz1uFA",
+        "owns": false
+      },
+      {
+        "__typename": "Entitlement_CourseOwnership",
+        "courseId": "25Fh8ivBEee6gA5XksfBbg",
+        "owns": false
+      }
+    ],
+    "expiresAt": {
+      "__typename": "Timestamp",
+      "seconds": "1780732346",
+      "nanos": 0
+    },
+    "firstOwnedAt": null,
+    "lastUpdatedTime": null
+  }
+}

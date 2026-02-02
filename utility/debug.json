@@ -1,0 +1,640 @@
+{
+  "elements": [
+    {
+      "id": "W_mOXCrdEeeNPQ68_4aPpA"
+    }
+  ],
+  "paging": {},
+  "linked": {
+    "onDemandCourseMaterialItems.v2": [
+      {
+        "name": "Welcome",
+        "lessonId": "DOB0K",
+        "timeCommitment": 331000,
+        "id": "Cuf2f",
+        "moduleId": "tfmmo",
+        "slug": "welcome"
+      },
+      {
+        "name": "What is a Neural Network?",
+        "lessonId": "dSSMw",
+        "timeCommitment": 436000,
+        "id": "eAE2G",
+        "moduleId": "tfmmo",
+        "slug": "what-is-a-neural-network"
+      },
+      {
+        "name": "Supervised Learning with Neural Networks",
+        "lessonId": "dSSMw",
+        "timeCommitment": 508000,
+        "id": "2c38r",
+        "moduleId": "tfmmo",
+        "slug": "supervised-learning-with-neural-networks"
+      },
+      {
+        "name": "Why is Deep Learning taking off?",
+        "lessonId": "dSSMw",
+        "timeCommitment": 621000,
+        "id": "praGm",
+        "moduleId": "tfmmo",
+        "slug": "why-is-deep-learning-taking-off"
+      },
+      {
+        "name": "About this Course",
+        "lessonId": "dSSMw",
+        "timeCommitment": 147000,
+        "id": "6A3es",
+        "moduleId": "tfmmo",
+        "slug": "about-this-course"
+      },
+      {
+        "name": "Intake Survey",
+        "lessonId": "dSSMw",
+        "timeCommitment": 60000,
+        "id": "8m11i",
+        "moduleId": "tfmmo",
+        "slug": "intake-survey"
+      },
+      {
+        "name": "Join the DeepLearning.AI Forum to ask questions, get support, or share amazing ideas!",
+        "lessonId": "dSSMw",
+        "timeCommitment": 120000,
+        "id": "nviCw",
+        "moduleId": "tfmmo",
+        "slug": "join-the-deeplearning-ai-forum-to-ask-questions-get-support-or-share-amazing"
+      },
+      {
+        "name": "Frequently Asked Questions",
+        "lessonId": "dSSMw",
+        "timeCommitment": 600000,
+        "id": "CHeiR",
+        "moduleId": "tfmmo",
+        "slug": "frequently-asked-questions"
+      },
+      {
+        "name": "Lecture Notes W1",
+        "lessonId": "vkZGw",
+        "timeCommitment": 60000,
+        "id": "h0anT",
+        "moduleId": "tfmmo",
+        "slug": "lecture-notes-w1"
+      },
+      {
+        "name": "Introduction to Deep Learning ",
+        "lessonId": "ZQReK",
+        "timeCommitment": 3000000,
+        "id": "3KFZW",
+        "moduleId": "tfmmo",
+        "slug": "introduction-to-deep-learning"
+      },
+      {
+        "name": "Geoffrey Hinton Interview",
+        "lessonId": "F3fCA",
+        "timeCommitment": 2422000,
+        "id": "dcm5r",
+        "moduleId": "tfmmo",
+        "slug": "geoffrey-hinton-interview"
+      },
+      {
+        "name": "Binary Classification",
+        "lessonId": "8XsyH",
+        "timeCommitment": 503000,
+        "id": "Z8j0R",
+        "moduleId": "0II0E",
+        "slug": "binary-classification"
+      },
+      {
+        "name": "Logistic Regression",
+        "lessonId": "8XsyH",
+        "timeCommitment": 358000,
+        "id": "LoKih",
+        "moduleId": "0II0E",
+        "slug": "logistic-regression"
+      },
+      {
+        "name": "Logistic Regression Cost Function",
+        "lessonId": "8XsyH",
+        "timeCommitment": 492000,
+        "id": "yWaRd",
+        "moduleId": "0II0E",
+        "slug": "logistic-regression-cost-function"
+      },
+      {
+        "name": "Gradient Descent",
+        "lessonId": "8XsyH",
+        "timeCommitment": 683000,
+        "id": "A0tBd",
+        "moduleId": "0II0E",
+        "slug": "gradient-descent"
+      },
+      {
+        "name": "Derivatives",
+        "lessonId": "8XsyH",
+        "timeCommitment": 430000,
+        "id": "0ULGt",
+        "moduleId": "0II0E",
+        "slug": "derivatives"
+      },
+      {
+        "name": "More Derivative Examples",
+        "lessonId": "8XsyH",
+        "timeCommitment": 627000,
+        "id": "oEcPT",
+        "moduleId": "0II0E",
+        "slug": "more-derivative-examples"
+      },
+      {
+        "name": "Computation Graph",
+        "lessonId": "8XsyH",
+        "timeCommitment": 213000,
+        "id": "4WdOY",
+        "moduleId": "0II0E",
+        "slug": "computation-graph"
+      },
+      {
+        "name": "Derivatives with a Computation Graph",
+        "lessonId": "8XsyH",
+        "timeCommitment": 873000,
+        "id": "0VSHe",
+        "moduleId": "0II0E",
+        "slug": "derivatives-with-a-computation-graph"
+      },
+      {
+        "name": "Logistic Regression Gradient Descent",
+        "lessonId": "8XsyH",
+        "timeCommitment": 402000,
+        "id": "5sdh6",
+        "moduleId": "0II0E",
+        "slug": "logistic-regression-gradient-descent"
+      },
+      {
+        "name": "Gradient Descent on m Examples",
+        "lessonId": "8XsyH",
+        "timeCommitment": 480000,
+        "id": "udiAq",
+        "moduleId": "0II0E",
+        "slug": "gradient-descent-on-m-examples"
+      },
+      {
+        "name": "Derivation of DL/dz (Optional)",
+        "lessonId": "8XsyH",
+        "timeCommitment": 600000,
+        "id": "chdB6",
+        "moduleId": "0II0E",
+        "slug": "derivation-of-dl-dz-optional"
+      },
+      {
+        "name": "Vectorization",
+        "lessonId": "IO13w",
+        "timeCommitment": 484000,
+        "id": "NYnog",
+        "moduleId": "0II0E",
+        "slug": "vectorization"
+      },
+      {
+        "name": "More Vectorization Examples",
+        "lessonId": "IO13w",
+        "timeCommitment": 379000,
+        "id": "ZPlX9",
+        "moduleId": "0II0E",
+        "slug": "more-vectorization-examples"
+      },
+      {
+        "name": "Vectorizing Logistic Regression",
+        "lessonId": "IO13w",
+        "timeCommitment": 452000,
+        "id": "moUlO",
+        "moduleId": "0II0E",
+        "slug": "vectorizing-logistic-regression"
+      },
+      {
+        "name": "Vectorizing Logistic Regression's Gradient Output",
+        "lessonId": "IO13w",
+        "timeCommitment": 577000,
+        "id": "IgFnJ",
+        "moduleId": "0II0E",
+        "slug": "vectorizing-logistic-regressions-gradient-output"
+      },
+      {
+        "name": "Broadcasting in Python",
+        "lessonId": "IO13w",
+        "timeCommitment": 665000,
+        "id": "uBuTv",
+        "moduleId": "0II0E",
+        "slug": "broadcasting-in-python"
+      },
+      {
+        "name": "A Note on Python/Numpy Vectors",
+        "lessonId": "IO13w",
+        "timeCommitment": 409000,
+        "id": "87MUx",
+        "moduleId": "0II0E",
+        "slug": "a-note-on-python-numpy-vectors"
+      },
+      {
+        "name": "Quick tour of Jupyter/iPython Notebooks",
+        "lessonId": "IO13w",
+        "timeCommitment": 222000,
+        "id": "ChN1T",
+        "moduleId": "0II0E",
+        "slug": "quick-tour-of-jupyter-ipython-notebooks"
+      },
+      {
+        "name": "Explanation of Logistic Regression Cost Function (Optional)",
+        "lessonId": "IO13w",
+        "timeCommitment": 434000,
+        "id": "SmIbQ",
+        "moduleId": "0II0E",
+        "slug": "explanation-of-logistic-regression-cost-function-optional"
+      },
+      {
+        "name": "Lecture Notes W2",
+        "lessonId": "i7S0Y",
+        "timeCommitment": 60000,
+        "id": "5h3ML",
+        "moduleId": "0II0E",
+        "slug": "lecture-notes-w2"
+      },
+      {
+        "name": "Neural Network Basics               ",
+        "lessonId": "1Mz9i",
+        "timeCommitment": 3000000,
+        "id": "c1bic",
+        "moduleId": "0II0E",
+        "slug": "neural-network-basics"
+      },
+      {
+        "name": "Deep Learning Honor Code",
+        "lessonId": "NOLAY",
+        "timeCommitment": 120000,
+        "id": "muGtL",
+        "moduleId": "0II0E",
+        "slug": "deep-learning-honor-code"
+      },
+      {
+        "name": "Programming Assignment FAQ",
+        "lessonId": "NOLAY",
+        "timeCommitment": 600000,
+        "id": "oABOh",
+        "moduleId": "0II0E",
+        "slug": "programming-assignment-faq"
+      },
+      {
+        "name": "(Optional) Downloading your Notebook, Downloading your Workspace and Refreshing your Workspace",
+        "lessonId": "NOLAY",
+        "timeCommitment": 300000,
+        "id": "xLEC1",
+        "moduleId": "0II0E",
+        "slug": "optional-downloading-your-notebook-downloading-your-workspace-and-refreshing"
+      },
+      {
+        "name": "Python Basics with Numpy",
+        "lessonId": "NOLAY",
+        "timeCommitment": 3600000,
+        "id": "isoAV",
+        "moduleId": "0II0E",
+        "slug": "python-basics-with-numpy"
+      },
+      {
+        "name": "Logistic Regression with a Neural Network Mindset",
+        "lessonId": "NOLAY",
+        "timeCommitment": 10800000,
+        "id": "thQd4",
+        "moduleId": "0II0E",
+        "slug": "logistic-regression-with-a-neural-network-mindset"
+      },
+      {
+        "name": "Pieter Abbeel Interview",
+        "lessonId": "fSgik",
+        "timeCommitment": 963000,
+        "id": "eqiZZ",
+        "moduleId": "0II0E",
+        "slug": "pieter-abbeel-interview"
+      },
+      {
+        "name": "Neural Networks Overview",
+        "lessonId": "jaBa1",
+        "timeCommitment": 266000,
+        "id": "qg83v",
+        "moduleId": "qaG8e",
+        "slug": "neural-networks-overview"
+      },
+      {
+        "name": "Neural Network Representation",
+        "lessonId": "jaBa1",
+        "timeCommitment": 314000,
+        "id": "GyW9e",
+        "moduleId": "qaG8e",
+        "slug": "neural-network-representation"
+      },
+      {
+        "name": "Computing a Neural Network's Output",
+        "lessonId": "jaBa1",
+        "timeCommitment": 597000,
+        "id": "tyAGh",
+        "moduleId": "qaG8e",
+        "slug": "computing-a-neural-networks-output"
+      },
+      {
+        "name": "Vectorizing Across Multiple Examples",
+        "lessonId": "jaBa1",
+        "timeCommitment": 545000,
+        "id": "ZCcMM",
+        "moduleId": "qaG8e",
+        "slug": "vectorizing-across-multiple-examples"
+      },
+      {
+        "name": "Explanation for Vectorized Implementation",
+        "lessonId": "jaBa1",
+        "timeCommitment": 457000,
+        "id": "Y20qP",
+        "moduleId": "qaG8e",
+        "slug": "explanation-for-vectorized-implementation"
+      },
+      {
+        "name": "Activation Functions",
+        "lessonId": "jaBa1",
+        "timeCommitment": 656000,
+        "id": "4dDC1",
+        "moduleId": "qaG8e",
+        "slug": "activation-functions"
+      },
+      {
+        "name": "Why do you need Non-Linear Activation Functions?",
+        "lessonId": "jaBa1",
+        "timeCommitment": 335000,
+        "id": "OASKH",
+        "moduleId": "qaG8e",
+        "slug": "why-do-you-need-non-linear-activation-functions"
+      },
+      {
+        "name": "Derivatives of Activation Functions",
+        "lessonId": "jaBa1",
+        "timeCommitment": 477000,
+        "id": "qcG1j",
+        "moduleId": "qaG8e",
+        "slug": "derivatives-of-activation-functions"
+      },
+      {
+        "name": "Gradient Descent for Neural Networks",
+        "lessonId": "jaBa1",
+        "timeCommitment": 597000,
+        "id": "Wh8NI",
+        "moduleId": "qaG8e",
+        "slug": "gradient-descent-for-neural-networks"
+      },
+      {
+        "name": "Backpropagation Intuition (Optional)",
+        "lessonId": "jaBa1",
+        "timeCommitment": 948000,
+        "id": "6dDj7",
+        "moduleId": "qaG8e",
+        "slug": "backpropagation-intuition-optional"
+      },
+      {
+        "name": "Random Initialization",
+        "lessonId": "jaBa1",
+        "timeCommitment": 477000,
+        "id": "XtFPI",
+        "moduleId": "qaG8e",
+        "slug": "random-initialization"
+      },
+      {
+        "name": "Lecture Notes W3",
+        "lessonId": "J0GBO",
+        "timeCommitment": 60000,
+        "id": "w3g8c",
+        "moduleId": "qaG8e",
+        "slug": "lecture-notes-w3"
+      },
+      {
+        "name": "Shallow Neural Networks                 ",
+        "lessonId": "AYywe",
+        "timeCommitment": 3000000,
+        "id": "mLgvR",
+        "moduleId": "qaG8e",
+        "slug": "shallow-neural-networks"
+      },
+      {
+        "name": "Planar Data Classification with One Hidden Layer",
+        "lessonId": "8dgYP",
+        "timeCommitment": 10800000,
+        "id": "e6FsA",
+        "moduleId": "qaG8e",
+        "slug": "planar-data-classification-with-one-hidden-layer"
+      },
+      {
+        "name": "Ian Goodfellow Interview",
+        "lessonId": "igNnv",
+        "timeCommitment": 895000,
+        "id": "WSia1",
+        "moduleId": "qaG8e",
+        "slug": "ian-goodfellow-interview"
+      },
+      {
+        "name": "Deep L-layer Neural Network",
+        "lessonId": "ionMx",
+        "timeCommitment": 350000,
+        "id": "7dP6E",
+        "moduleId": "69zRV",
+        "slug": "deep-l-layer-neural-network"
+      },
+      {
+        "name": "Forward Propagation in a Deep Network",
+        "lessonId": "ionMx",
+        "timeCommitment": 435000,
+        "id": "MijzH",
+        "moduleId": "69zRV",
+        "slug": "forward-propagation-in-a-deep-network"
+      },
+      {
+        "name": "Getting your Matrix Dimensions Right",
+        "lessonId": "ionMx",
+        "timeCommitment": 669000,
+        "id": "Rz47X",
+        "moduleId": "69zRV",
+        "slug": "getting-your-matrix-dimensions-right"
+      },
+      {
+        "name": "Why Deep Representations?",
+        "lessonId": "ionMx",
+        "timeCommitment": 633000,
+        "id": "rz9xJ",
+        "moduleId": "69zRV",
+        "slug": "why-deep-representations"
+      },
+      {
+        "name": "Building Blocks of Deep Neural Networks",
+        "lessonId": "ionMx",
+        "timeCommitment": 513000,
+        "id": "uGCun",
+        "moduleId": "69zRV",
+        "slug": "building-blocks-of-deep-neural-networks"
+      },
+      {
+        "name": "Forward and Backward Propagation",
+        "lessonId": "ionMx",
+        "timeCommitment": 629000,
+        "id": "znwiG",
+        "moduleId": "69zRV",
+        "slug": "forward-and-backward-propagation"
+      },
+      {
+        "name": "Optional Reading: Feedforward Neural Networks in Depth",
+        "lessonId": "ionMx",
+        "timeCommitment": 600000,
+        "id": "3FdNk",
+        "moduleId": "69zRV",
+        "slug": "optional-reading-feedforward-neural-networks-in-depth"
+      },
+      {
+        "name": "Parameters vs Hyperparameters",
+        "lessonId": "ionMx",
+        "timeCommitment": 436000,
+        "id": "TBvb5",
+        "moduleId": "69zRV",
+        "slug": "parameters-vs-hyperparameters"
+      },
+      {
+        "name": "Clarification For: What does this have to do with the brain?",
+        "lessonId": "ionMx",
+        "timeCommitment": 60000,
+        "id": "E79Uh",
+        "moduleId": "69zRV",
+        "slug": "clarification-for-what-does-this-have-to-do-with-the-brain"
+      },
+      {
+        "name": "What does this have to do with the brain?",
+        "lessonId": "ionMx",
+        "timeCommitment": 196000,
+        "id": "obJnR",
+        "moduleId": "69zRV",
+        "slug": "what-does-this-have-to-do-with-the-brain"
+      },
+      {
+        "name": "Lecture Notes W4",
+        "lessonId": "rV3Ni",
+        "timeCommitment": 60000,
+        "id": "amcHB",
+        "moduleId": "69zRV",
+        "slug": "lecture-notes-w4"
+      },
+      {
+        "name": "Key Concepts on Deep Neural Networks                 ",
+        "lessonId": "EmUbD",
+        "timeCommitment": 3000000,
+        "id": "hE8Y3",
+        "moduleId": "69zRV",
+        "slug": "key-concepts-on-deep-neural-networks"
+      },
+      {
+        "name": "[IMPORTANT] Reminder about end of access to Lab Notebooks",
+        "lessonId": "VnZiD",
+        "timeCommitment": 120000,
+        "id": "dPcHi",
+        "moduleId": "69zRV",
+        "slug": "important-reminder-about-end-of-access-to-lab-notebooks"
+      },
+      {
+        "name": "Building your Deep Neural Network: Step by Step",
+        "lessonId": "G82Vx",
+        "timeCommitment": 10800000,
+        "id": "GY8CB",
+        "moduleId": "69zRV",
+        "slug": "building-your-deep-neural-network-step-by-step"
+      },
+      {
+        "name": "Confusing Output from the AutoGrader",
+        "lessonId": "G82Vx",
+        "timeCommitment": 600000,
+        "id": "A1DNP",
+        "moduleId": "69zRV",
+        "slug": "confusing-output-from-the-autograder"
+      },
+      {
+        "name": "Deep Neural Network - Application",
+        "lessonId": "G82Vx",
+        "timeCommitment": 10800000,
+        "id": "Sfu8g",
+        "moduleId": "69zRV",
+        "slug": "deep-neural-network-application"
+      },
+      {
+        "name": "References ",
+        "lessonId": "ZR4iA",
+        "timeCommitment": 600000,
+        "id": "o2jf4",
+        "moduleId": "69zRV",
+        "slug": "references"
+      },
+      {
+        "name": "Acknowledgments",
+        "lessonId": "ZR4iA",
+        "timeCommitment": 600000,
+        "id": "YbXnX",
+        "moduleId": "69zRV",
+        "slug": "acknowledgments"
+      }
+    ],
+    "onDemandCourseMaterialModules.v1": [
+      {
+        "name": "Introduction to Deep Learning",
+        "description": "Analyze the major trends driving the rise of deep learning, and give examples of where and how it is applied today.  ",
+        "timeCommitment": 8305000,
+        "id": "tfmmo",
+        "lessonIds": [
+          "DOB0K",
+          "dSSMw",
+          "vkZGw",
+          "ZQReK",
+          "F3fCA"
+        ],
+        "slug": "introduction-to-deep-learning"
+      },
+      {
+        "name": "Neural Networks Basics",
+        "description": "Set up a machine learning problem with a neural network mindset and use vectorization to speed up your models. ",
+        "timeCommitment": 28726000,
+        "id": "0II0E",
+        "lessonIds": [
+          "8XsyH",
+          "IO13w",
+          "i7S0Y",
+          "1Mz9i",
+          "NOLAY",
+          "fSgik"
+        ],
+        "slug": "neural-networks-basics"
+      },
+      {
+        "name": "Shallow Neural Networks",
+        "description": "Build a neural network with one hidden layer, using forward propagation and backpropagation. ",
+        "timeCommitment": 20424000,
+        "id": "qaG8e",
+        "lessonIds": [
+          "jaBa1",
+          "J0GBO",
+          "AYywe",
+          "8dgYP",
+          "igNnv"
+        ],
+        "slug": "shallow-neural-networks"
+      },
+      {
+        "name": "Deep Neural Networks",
+        "description": "Analyze the key computations underlying deep learning, then use them to build and train deep neural networks for computer vision tasks. ",
+        "timeCommitment": 31101000,
+        "id": "69zRV",
+        "lessonIds": [
+          "ionMx",
+          "rV3Ni",
+          "EmUbD",
+          "VnZiD",
+          "G82Vx",
+          "ZR4iA"
+        ],
+        "slug": "deep-neural-networks"
+      }
+    ]
+  }
+}
