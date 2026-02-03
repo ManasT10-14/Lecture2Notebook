@@ -1,6 +1,6 @@
 from langgraph.graph import START,END,StateGraph
-from state import State
-from nodes import map_transcripts,route_week,fan_out_week,process_transcript,compile_for_a_week,summary_week,advance_week,route_cell,fan_out_cell,cell_generation,advance_cells_week,build_and_save_notebook
+from Lecture2Notebook.pipeline.state import State
+from Lecture2Notebook.pipeline.nodes import map_transcripts,route_week,fan_out_week,process_transcript,compile_for_a_week,summary_week,advance_week,route_cell,fan_out_cell,cell_generation,advance_cells_week,build_and_save_notebook
 from dotenv import load_dotenv
 load_dotenv()
 

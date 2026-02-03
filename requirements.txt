@@ -1,10 +1,8 @@
 langgraph
 langchain
 langchain-google-genai
-dotenv
-langchain-community
-langchain-huggingface
-sentence-transformers
 langchain-groq
-tiktoken
+pydantic
+attrs
+python-dotenv
 nbformat

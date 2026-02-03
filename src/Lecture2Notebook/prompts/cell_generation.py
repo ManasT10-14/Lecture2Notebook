@@ -1,4 +1,4 @@
-from base import PROMPT_HEADER,STRICT_JSON_RULES
+from Lecture2Notebook.prompts.base import PROMPT_HEADER,STRICT_JSON_RULES
 from typing import List,Dict,Any
 
 

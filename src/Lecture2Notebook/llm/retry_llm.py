@@ -1,5 +1,5 @@
 import time,random
-from errors import UnifiedRateLimitError
+from Lecture2Notebook.llm.errors import UnifiedRateLimitError
 
 def call_llm_with_retry(
     llm_call_fn,

@@ -1,17 +1,24 @@
-from llm.cache import init_cache_db
-from llm.providers.gemini import GeminiProvider
+from Lecture2Notebook.llm.providers.gemini import GeminiProvider
+from Lecture2Notebook.llm.providers.claude import ClaudeProvider
 from langchain_google_genai import ChatGoogleGenerativeAI
-from llm.cache import SQLiteLLMCache
-from config import DB_PATH,MODEL_NAME,TRANSCRIPTS_PATH
-def build_initial_state():
+from Lecture2Notebook.llm.cache import SQLiteLLMCache
+from Lecture2Notebook.rendering.config import DB_PATH,MODEL_NAME,TRANSCRIPTS_PATH
+from langchain_anthropic import ChatAnthropic
+def build_initial_state(*,transcripts_path = TRANSCRIPTS_PATH,
+    model_name = MODEL_NAME):
+    
     cache = SQLiteLLMCache(db_path=DB_PATH)
 
-    llm = ChatGoogleGenerativeAI(
-        model="gemini-2.5-flash",
-        temperature=0.0,
+    # llm = ChatGoogleGenerativeAI(
+    #     model=model_name,
+    #     temperature=0.0,
+    # )
+    llm = ChatAnthropic(
+    model="claude-haiku-4-5-20251001",
+    temperature=0.2
     )
 
-    provider = GeminiProvider()
+    provider = ClaudeProvider()
 
     return {
         "cache": cache,
@@ -23,5 +30,5 @@ def build_initial_state():
         "lessons": {},
         "lesson_cells": {},
 
-        "transcripts_path": TRANSCRIPTS_PATH,
+        "transcripts_path": transcripts_path,
     }

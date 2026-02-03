@@ -1,9 +1,9 @@
 # llm/providers/gemini.py
-from google.api_core.exceptions import ResourceExhausted
+from anthropic import RateLimitError
 from Lecture2Notebook.llm.errors import UnifiedRateLimitError
 from Lecture2Notebook.llm.providers.base import BaseLLMProvider
 
-class GeminiProvider(BaseLLMProvider):
+class ClaudeProvider(BaseLLMProvider):
 
     def call(self, llm, messages, schema=None):
         try:
@@ -11,5 +11,5 @@ class GeminiProvider(BaseLLMProvider):
                 llm = llm.with_structured_output(schema)
             return llm.invoke(messages)
 
-        except ResourceExhausted as e:
+        except RateLimitError as e:
             raise UnifiedRateLimitError() from e

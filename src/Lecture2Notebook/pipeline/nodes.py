@@ -4,15 +4,17 @@ from typing import Literal,Dict,List,TypedDict,Optional,Annotated,Any
 from pathlib import Path
 from nbformat.v4 import new_notebook, new_markdown_cell, new_code_cell
 import os
+from langgraph.graph import START,END
 from dotenv import load_dotenv
-from state import State
-from schemas.lesson import LessonMemory
-from schemas.week import Week
-from schemas.cells import Cells,CellFormat
-from prompts.lesson_prompt import PROMPT_VERSION_LESSON,SYSTEM_PROMPT_LESSON,build_lesson_memory_generation_prompt
-from prompts.week_summary_prompt import PROMPT_VERSION_WEEK,SYSTEM_PROMPT_WEEK,build_week_summary_generation_prompt
-from prompts.cell_generation import PROMPT_VERSION_CELL,build_cell_generation_prompt,SYSTEM_PROMPT_CELL
-from llm.service import call_llm_cached
+from Lecture2Notebook.pipeline.state import State
+from Lecture2Notebook.schemas.lesson import LessonMemory
+from Lecture2Notebook.schemas.week import Week
+from Lecture2Notebook.schemas.cells import Cells,CellFormat
+from Lecture2Notebook.prompts.lesson_prompt import PROMPT_VERSION_LESSON,SYSTEM_PROMPT_LESSON,build_lesson_memory_generation_prompt
+from Lecture2Notebook.prompts.week_summary_prompt import PROMPT_VERSION_WEEK,SYSTEM_PROMPT_WEEK,build_week_summary_generation_prompt
+from Lecture2Notebook.prompts.cell_generation import PROMPT_VERSION_CELL,build_cell_generation_prompt,SYSTEM_PROMPT_CELL
+from Lecture2Notebook.llm.service import call_llm_cached
+from Lecture2Notebook.rendering.config import MODEL_NAME
 load_dotenv()
 
 
@@ -40,7 +42,7 @@ def fan_out_week(state: State):
     return [
         Send(
             "process_transcript",
-            {"transcript": transcript, "current_week": state["current_week"],"t_id":id+1,"weeks":weeks}
+            {"transcript": transcript, "current_week": state["current_week"],"t_id":id+1,"weeks":weeks,"cache":state["cache"],"llm":state["llm"],"provider":state["provider"]}
         )
         for id,transcript in enumerate(state["current_week_transcripts"])
     ]
@@ -81,7 +83,7 @@ def process_transcript(state: State) -> State:
     cache=state["cache"],
     llm=state["llm"],
     provider=state["provider"],
-    model_name="gemini-2.5-flash",
+    model_name=MODEL_NAME,
     system_prompt=SYSTEM_PROMPT_LESSON,
     user_prompt=prompt,
     output_schema=LessonMemory,
@@ -135,7 +137,7 @@ def summary_week(state:State) ->State:
     cache=state["cache"],
     llm=state["llm"],
     provider=state["provider"],
-    model_name="gemini-2.5-flash",
+    model_name=MODEL_NAME,
     system_prompt=SYSTEM_PROMPT_WEEK,
     user_prompt=prompt,
     output_schema=Week,
@@ -157,22 +159,24 @@ def advance_week(state: State) -> Command[Literal["route_cell","route_week"]]:
         print("Routing to the cell generation part.")
         return Command(update={"current_week":1},goto="route_cell")
     else:
-        print(f"Going to the next week which is {state["current_week"]+1}")
+        print(f"Going to the next week which is {state['current_week']+1}")
         return Command(goto="route_week",update={"current_week": state["current_week"] + 1})
  
 def route_cell(state: State) -> State:
     print("Routing to the creation of cells")
     current_week = state["current_week"]
-
+    print(current_week)
     lessonMemoryT = state["lessons"][current_week]
     return {"current_week_transcripts":lessonMemoryT}
 
 def fan_out_cell(state: State):
-
+    print("in fan out cell")
+    print(len(state["current_week_transcripts"]))
+    print(state["current_week"])
     return [
         Send(
             "cell_generation",
-            {"lesson_memory": lessonMemoryT, "current_week": state["current_week"],"t_id":id+1}
+            {"lesson_memory": lessonMemoryT, "current_week": state["current_week"],"t_id":id+1,"cache":state["cache"],"llm":state["llm"],"provider":state["provider"]}
         )
         for id,lessonMemoryT in enumerate(state["current_week_transcripts"])
     ]
@@ -180,14 +184,14 @@ def fan_out_cell(state: State):
 def cell_generation(state:State) -> State:
     lesson = state["lesson_memory"]
     lesson_id = state["t_id"]
-    
+    print(state["current_week"])
     prompt = build_cell_generation_prompt(lesson_memory=lesson)
     
     result : Cells = call_llm_cached(
     cache=state["cache"],
     llm=state["llm"],
     provider=state["provider"],
-    model_name="gemini-2.5-flash",
+    model_name=MODEL_NAME,
     system_prompt=SYSTEM_PROMPT_CELL,
     user_prompt=prompt,
     output_schema=Cells,
@@ -197,21 +201,31 @@ def cell_generation(state:State) -> State:
     print(f"Generated Cell for Transcript: {lesson_id}")
     current_week = state["current_week"]
   
-    return {"current_lesson":lesson_id,"lesson_cells":{current_week:{lesson_id:result.cells}}}
+    return {"lesson_cells":{current_week:{lesson_id:result.cells}}}
 
 
-def advance_cells_week(state: State) -> Command[Literal["build_and_save_notebook","route_cell"]]:
+def advance_cells_week(
+    state: State,
+) -> Command[Literal["route_cell", "__end__"]]:
     current_week = state["current_week"]
-    print(len(state["lessons"]) == current_week)
-    if current_week == len(state["lessons"]):
-        print("Going to Save to notebook")
-        return Command(update={"current_week":1},goto="build_and_save_notebook")
+    total_weeks = len(state["path"])
+    print(f"total_weeks: {total_weeks}")
+    print(f"current_week: {current_week}")
+    if current_week == total_weeks:
+        print("All weeks processed. Saving notebook and terminating.")
+        return Command(goto="build_and_save_notebook")
+
     else:
-        print(f"Looping for the next week number: {current_week+1}")
-        return Command(goto="route_cell",update={"current_week": state["current_week"] + 1})
+        print("I am in the loop")
+        next_week = current_week + 1
+        print(next_week)
+        print(f"Moving to cell generation for week {next_week}")
+        return Command(
+            goto="route_cell",
+            update={"current_week": next_week}
+        )
 
-
-def build_and_save_notebook(state):
+def build_and_save_notebook(state:State) -> Command[Literal["__end__"]]:
     """
     LangGraph node that:
     1. Builds a Jupyter notebook from lesson_cells
@@ -280,6 +294,7 @@ def build_and_save_notebook(state):
     notebook_path = output_dir / "course_notes.ipynb"
     nbformat.write(nb, notebook_path)
 
-    return {
-        "notebook_path": str(notebook_path)
-    }
+    return Command(
+        update={"notebook_path": str(notebook_path)},
+        goto=END
+    )

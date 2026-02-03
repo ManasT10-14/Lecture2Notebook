@@ -1,4 +1,4 @@
-from retry_llm import call_llm_with_retry
+from Lecture2Notebook.llm.retry_llm import call_llm_with_retry
 def call_llm_cached(
     *,
     cache,                      # SQLiteLLMCache instance
