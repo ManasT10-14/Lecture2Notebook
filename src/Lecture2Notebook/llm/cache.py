@@ -1,5 +1,3 @@
-# cache.py
-
 import sqlite3
 import hashlib
 import json
