@@ -2,9 +2,9 @@ from base import PROMPT_HEADER,STRICT_JSON_RULES
 from typing import List,Dict,Any
 
 
-PROMPT_VERSION = "cell_generation_v1"
+PROMPT_VERSION_CELL = "cell_generation_v1"
 
-SYSTEM_MESSAGE_CELL = """You are generating notebook cells for a SINGLE lesson in a Jupyter notebook.
+SYSTEM_PROMPT_CELL = """You are generating notebook cells for a SINGLE lesson in a Jupyter notebook.
 You are NOT allowed to decide the structure of the notebook.
 You MUST follow the provided CellPlan EXACTLY.
 Your task is ONLY to fill in the content of each cell.
@@ -69,7 +69,6 @@ def build_cell_plan(lesson) -> list[dict]:
 
 def build_cell_generation_prompt(
     *,
-    lesson,
     lesson_memory,
 ) -> str:
     """
@@ -86,7 +85,7 @@ def build_cell_generation_prompt(
       }
     ]
     }"""
-    cell_plan = build_cell_plan(lesson=lesson)
+    cell_plan = build_cell_plan(lesson=lesson_memory)
     return f"""
         {PROMPT_HEADER}
         TASK:

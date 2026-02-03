@@ -2,7 +2,7 @@ from base import PROMPT_HEADER,STRICT_JSON_RULES
 from typing import List,Dict,Any
 
 
-PROMPT_VERSION = "week_summary_generation_v1"
+PROMPT_VERSION_WEEK = "week_summary_generation_v1"
 
 SYSTEM_PROMPT_WEEK = """You are an expert in aggregating content. Your task is to analyze the provided data for each lesson of for this week and produce a single Week object."""
 

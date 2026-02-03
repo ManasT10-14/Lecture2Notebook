@@ -1,6 +1,6 @@
 from base import PROMPT_HEADER,STRICT_JSON_RULES
 
-PROMPT_VERSION = "lesson_generation_v1"
+PROMPT_VERSION_LESSON = "lesson_generation_v1"
 
 SYSTEM_PROMPT_LESSON = """You are an expert in extracting structured learning memory from a single transcript of a lesson. Do it as the user says. Maintain the proper format and see that the content is very much relevant."""
 
