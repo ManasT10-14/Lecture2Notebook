@@ -1,0 +1,8 @@
+incorporate the transcript fetching pipeline in this as well before making any changes in models
+Week wise nb generation
+use Claude Sonnet 
+Modify prompts to place codes only where it is neccessary
+Overall modify prompts a bit 
+launch it once done
+
+Overall Code is greattt just do these and some other things as it may come to mind
