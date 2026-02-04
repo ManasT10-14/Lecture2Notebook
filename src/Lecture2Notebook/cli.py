@@ -4,6 +4,7 @@ from pathlib import Path
 from Lecture2Notebook.pipeline.graph import build_graph
 from Lecture2Notebook.rendering.init_state import build_initial_state
 
+# To run : set PYTHONPATH=src && python -m Lecture2Notebook.cli --transcripts data/transcripts --model gemini-2.5-flash
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -42,7 +43,7 @@ def main():
     )
 
     graph = build_graph()
-    final_state = graph.invoke(initial_state)
+    final_state = graph.invoke(initial_state,config={"recursion_limit": 100})
 
     notebook_path = final_state.get("notebook_path")
     print(f"\nNotebook successfully generated at:\n{notebook_path}")

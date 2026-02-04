@@ -26,14 +26,15 @@ def map_transcripts(state:State) -> State:
     for idx,chapter in enumerate(chapters):
         files = [f"{transcripts_path}/{chapter}/{file.name}"  for file in os.scandir(Path(f"{transcripts_path}/{chapter}"))]
         file_paths[idx+1] = files
-        
+    print("[MAPPING] Mapping was successful.")
     return {"path":file_paths}
 
 def route_week(state: State) -> State:
-    print("Inside Routing Week")
     current_week = state["current_week"]
+    print(f"[CONTENT CREATION] Processing the week {current_week}")
 
     transcripts = state["path"][current_week]
+    
     return {"current_week_transcripts":transcripts}
 
 
@@ -53,7 +54,6 @@ def process_transcript(state: State) -> State:
     transcript = state["transcript"]
     week = state["current_week"]
     t_id = state["t_id"]
-    print(f"Processing Transcript {t_id}")
     with open(transcript,"r") as f:
         content = f.read()
         
@@ -90,12 +90,12 @@ def process_transcript(state: State) -> State:
     prompt_version=PROMPT_VERSION_LESSON,
     )
     result.lesson_id = t_id
-    print(result)
     return {"output_week_material":[result]}
 
 
 def compile_for_a_week(state:State):
     current_week = state["current_week"]
+    print(f"[CONTENT CREATION] Processing for week {current_week} was successfull.")
     output_curr_week = state["output_week_material"]
     output = dict(state["lessons"])
     output[current_week] = output_curr_week
@@ -106,7 +106,7 @@ def compile_for_a_week(state:State):
 
 def summary_week(state:State) ->State:
     week = state["current_week"]
-    print(f"Generating Summary for the week {week}")
+    print(f"[SUMMARY] Generating summary for week {week}")
     if week == 1:
         week_context = None
     else:
@@ -129,7 +129,6 @@ def summary_week(state:State) ->State:
     lesson_memories_: LessonMemory = state["lessons"][week]
     updated_lesson_memories = [{"lesson_id":item.lesson_id,"key_concepts":item.key_concepts,"intuitions":item.intuitions} for item in lesson_memories_]
     
-    print(updated_lesson_memories)
     
     prompt = build_week_summary_generation_prompt(lesson_memories=updated_lesson_memories,previous_week_context=week_context)
     
@@ -145,46 +144,48 @@ def summary_week(state:State) ->State:
     )
     
     result.week_id = state["current_week"]
-    print(result)
     curr_week_summary = state["weeks"]
     curr_week_summary[state["current_week"]] = result
-
+    print(f"[SUMMARY] Summary generation successfully completed.")
     return {"weeks":curr_week_summary}
 
 
 def advance_week(state: State) -> Command[Literal["route_cell","route_week"]]:
     current_week = state["current_week"]
-    print(len(state["path"]) == current_week)
     if current_week == len(state["path"]):
-        print("Routing to the cell generation part.")
+        print(f"[ROUTING] Processing for all weeks successful moving to the cell generation part.")
         return Command(update={"current_week":1},goto="route_cell")
     else:
-        print(f"Going to the next week which is {state['current_week']+1}")
+        print(f"[ROUTING] Moving to the week {state['current_week']+1}")
         return Command(goto="route_week",update={"current_week": state["current_week"] + 1})
  
 def route_cell(state: State) -> State:
-    print("Routing to the creation of cells")
     current_week = state["current_week"]
-    print(current_week)
-    lessonMemoryT = state["lessons"][current_week]
-    return {"current_week_transcripts":lessonMemoryT}
+    print(f"[CELL CREATION] Starting cell creation for the week {current_week}")
+    lessonMemory_ = state["lessons"].get(current_week, [])
+    return {"current_week_cell_transcripts":lessonMemory_}
 
 def fan_out_cell(state: State):
-    print("in fan out cell")
-    print(len(state["current_week_transcripts"]))
-    print(state["current_week"])
-    return [
-        Send(
-            "cell_generation",
-            {"lesson_memory": lessonMemoryT, "current_week": state["current_week"],"t_id":id+1,"cache":state["cache"],"llm":state["llm"],"provider":state["provider"]}
+    items = state.get("current_week_cell_transcripts")
+    if not items:
+        return []
+    
+    sends = []
+    for idx, item in enumerate(items):
+        sends.append(
+            Send(
+                "cell_generation",
+            {"lesson_memory": item, "current_week": state["current_week"],"t_id":idx+1,"cache":state["cache"],"llm":state["llm"],"provider":state["provider"]},
+            )
         )
-        for id,lessonMemoryT in enumerate(state["current_week_transcripts"])
-    ]
+    
+    
+    return sends
 
 def cell_generation(state:State) -> State:
+    
     lesson = state["lesson_memory"]
     lesson_id = state["t_id"]
-    print(state["current_week"])
     prompt = build_cell_generation_prompt(lesson_memory=lesson)
     
     result : Cells = call_llm_cached(
@@ -198,77 +199,59 @@ def cell_generation(state:State) -> State:
     prompt_version=PROMPT_VERSION_CELL,
     )
     
-    print(f"Generated Cell for Transcript: {lesson_id}")
-    current_week = state["current_week"]
-  
-    return {"lesson_cells":{current_week:{lesson_id:result.cells}}}
+    return {"output_cells_":[{lesson_id:result.cells}]}
+
+
+def join_cell_generation(state: State) -> State:
+    print(f"[CELL GENERATION] Cell generation for week {state['current_week']} was successful.")
+    value = state["output_cells_"]
+    return {"current_week_cell_transcripts": [],"lesson_cells":{state["current_week"]:value},"output_cells_":None}
 
 
 def advance_cells_week(
     state: State,
-) -> Command[Literal["route_cell", "__end__"]]:
+) -> Command[Literal["route_cell", "build_and_save_notebook"]]:
     current_week = state["current_week"]
-    total_weeks = len(state["path"])
-    print(f"total_weeks: {total_weeks}")
-    print(f"current_week: {current_week}")
+    total_weeks = len(state["lessons"])
+
     if current_week == total_weeks:
-        print("All weeks processed. Saving notebook and terminating.")
+        print(f"[ROUTING] All weeks processed now moving towards the notebook generation.")
         return Command(goto="build_and_save_notebook")
 
     else:
-        print("I am in the loop")
+        
         next_week = current_week + 1
-        print(next_week)
-        print(f"Moving to cell generation for week {next_week}")
+        print(f"[ROUTING] Moving to the week {next_week}")
         return Command(
             goto="route_cell",
-            update={"current_week": next_week}
+            update={"current_week": state["current_week"]+1}
         )
 
-def build_and_save_notebook(state:State) -> Command[Literal["__end__"]]:
-    """
-    LangGraph node that:
-    1. Builds a Jupyter notebook from lesson_cells
-    2. Writes it to disk as a .ipynb file
-
-    Expects in state:
-        state["lesson_cells"]: Dict[int, Dict[int, List[CellFormat]]]
-
-    Returns:
-        {
-            "notebook_path": str
-        }
-    """
-
-    lesson_cells: Dict[int, Dict[int, List[CellFormat]]] = state["lesson_cells"]
+def build_and_save_notebook(state: State) -> Command:
+    lesson_cells = state["lesson_cells"]
 
     nb = new_notebook(cells=[])
 
-  
     for week_id in sorted(lesson_cells.keys()):
+        nb.cells.append(new_markdown_cell(f"# Week {week_id}"))
 
-        nb.cells.append(
-            new_markdown_cell(f"# Week {week_id}")
-        )
+  
+        lessons_raw = lesson_cells[week_id]
 
-        lessons_in_week = lesson_cells[week_id]
+        lessons_in_week: Dict[int, List[CellFormat]] = {}
+        for item in lessons_raw:
+            lessons_in_week.update(item)
 
         for lesson_id in sorted(lessons_in_week.keys()):
-          
-            nb.cells.append(
-                new_markdown_cell(f"## Lesson {lesson_id}")
-            )
+      
+            nb.cells.append(new_markdown_cell(f"## Lesson {lesson_id}"))
 
             cells_list = lessons_in_week[lesson_id]
 
-        
-            sorted_cells = sorted(
-                cells_list,
-                key=lambda c: c.cell_no
-            )
+            sorted_cells = sorted(cells_list, key=lambda c: c.cell_no)
 
             for cell in sorted_cells:
-            
+       
                 if cell.purpose:
                     nb.cells.append(
                         new_markdown_cell(f"**{cell.purpose}**")
@@ -286,8 +269,6 @@ def build_and_save_notebook(state:State) -> Command[Literal["__end__"]]:
 
                 else:
                     raise ValueError(f"Unknown cell_type: {cell.cell_type}")
-
-
     output_dir = Path("generated_notebooks")
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -296,5 +277,5 @@ def build_and_save_notebook(state:State) -> Command[Literal["__end__"]]:
 
     return Command(
         update={"notebook_path": str(notebook_path)},
-        goto=END
+        goto=END,
     )

@@ -19,11 +19,13 @@ class State(TypedDict):
     weeks: Dict[int,Week]   
     lessons: Dict[int,List[LessonMemory]]
     current_week_transcripts: Annotated[List[str],resettable_add] # for getting the transcripts of that particular week
-    output_week_material: Annotated[List[str],resettable_add] # for updating the output with the current weeks output. 
+    output_week_material: Annotated[List[str | Any],resettable_add] # for updating the output with the current weeks output. 
     lesson_cells: Annotated[Dict[int,Dict[int,List[CellFormat]]],operator.or_]
+    current_week_cell_transcripts: List[LessonMemory]
     current_lesson: int
     notebook_path: str
     cache: Any
     llm : Any
     provider : Any
+    output_cells_: Annotated[List[Dict[int,List[CellFormat]]],resettable_add]
     
